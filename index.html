@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTILO PVC | Luxury Wall Coverings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: '#C5A028',
+              'gold-light': '#D4AF37',
+              dark: '#050505',
+              premium: '#0A0A0A'
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              sans: ['Montserrat', 'sans-serif'],
+            },
+            keyframes: {
+              'fade-in': {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            },
+            animation: {
+              'fade-in': 'fade-in 1.2s ease-out forwards',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #050505;
+        color: #FFFFFF;
+        overflow-x: hidden;
+      }
+      .luxury-border {
+        border: 0.5px solid rgba(197, 160, 40, 0.2);
+      }
+      .gold-text-glow {
+        text-shadow: 0 0 25px rgba(197, 160, 40, 0.5);
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #C5A028 0%, #F5D76E 50%, #C5A028 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .glass-premium {
+        background: rgba(10, 10, 10, 0.8);
+        backdrop-filter: blur(20px);
+        border: 0.5px solid rgba(255, 255, 255, 0.05);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050505;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #C5A028;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+<body class="bg-dark font-sans text-white selection:bg-gold selection:text-dark">
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+    <script>
+      window.addEventListener('scroll', () => {
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach(reveal => {
+          const windowHeight = window.innerHeight;
+          const revealTop = reveal.getBoundingClientRect().top;
+          if (revealTop < windowHeight - 150) {
+            reveal.classList.add('active');
+          }
+        });
+      });
+    </script>
+</body>
+</html>
